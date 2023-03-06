@@ -41,7 +41,7 @@ export const inventory = {
         category: 'Hoodies',
         sex: 'Male',
         title: 'Forestry',
-        colours: ['green'],
+        colours: 'green',
         hex: '#24564A',
         image: '/products/hoodies/hoodie_forestry_green.png',
         cost: '59.99',

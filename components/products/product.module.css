@@ -1,6 +1,11 @@
-.circle {
-height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  display: inline-block;
+.products{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:bold;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }

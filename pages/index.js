@@ -8,12 +8,32 @@ import Product from '@/components/products'
 export default function Home() {
 
   const [data, setData] = useState();
+  const [trigger, setTrigger] = useState(false);
 
   const addingData = () => {
     console.log("Here");
     setData(inventory);
     console.log(inventory);
   }
+
+  const HandleChange = () => {
+
+  }
+
+  useEffect(() => {
+    let interval;
+
+    if (trigger) {
+      interval = setInterval(() => {
+        HandleChange()
+        setTrigger(false)
+      })
+    }
+
+    console.log(trigger)
+    return () => clearInterval(interval)
+  }, [trigger]);
+
 
   return (
     <>
@@ -26,184 +46,284 @@ export default function Home() {
       <main className={styles.main}>
 
         <Image src="/logo.png" width="300" height="100" />
+        <h1 className={styles.introTitle}>Filter by:</h1>
 
 
         {/* Male section */}
 
-        <h1 onClick={() => addingData()}>Male</h1>
-
-        {
-          data && data.clothing.map((item, male) => {
-            if (item.sex === "Male") {
-              return (
-                <div key={male}>
-                  <Product img={item.image} tag={item.title} />
-                </div>
-              )
-            }
-          })
-        }
+        <h2 className={styles.bigTitle}
+        onClick={() => {
+          addingData()
+          setTrigger(true)
+        }}>Male</h2>
 
 
-        <p onClick={() => addingData()}>Hoodies</p>
+        <div className={styles.content}>
+          {
+            data && data.clothing.map((item, male) => {
+              if (item.sex === "Male") {
+                return (
+                  <div key={male}>
+                    <Product img={item.image} tag={item.title} />
+                  </div>
+                )
+              }
+            })
+          }
+        </div>
 
-        {
-          data && data.clothing.map((item, malehoodies) => {
-            if (item.category === "Hoodies" && item.sex === "Male") {
-              return (
-                <div key={malehoodies}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Hoodies</div>
 
-        <p onClick={() => addingData()}>Jackets</p>
+        <div className={styles.content}>
 
-        {
-          data && data.clothing.map((item, malejackets) => {
-            if (item.category === "Jackets" && item.sex === "Male") {
-              return (
-                <div key={malejackets}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+          {
+            data && data.clothing.map((item, malehoodies) => {
+              if (item.category === "Hoodies" && item.sex === "Male") {
+                return (
+                  <div key={malehoodies}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
 
-        <p onClick={() => addingData()}>Headgear</p>
+        </div>
 
-        {
-          data && data.clothing.map((item, maleheadgear) => {
-            if (item.category === "Headgear" && item.sex === "Male") {
-              return (
-                <div key={maleheadgear}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Jackets</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, malejackets) => {
+              if (item.category === "Jackets" && item.sex === "Male") {
+                return (
+                  <div key={malejackets}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
+
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Headgear</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, maleheadgear) => {
+              if (item.category === "Headgear" && item.sex === "Male") {
+                return (
+                  <div key={maleheadgear}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
 
 
         {/* Female section */}
 
-        <h1 onClick={() => addingData()}>Female</h1>
+        <h2 className={styles.bigTitle}
+        onClick={() => addingData()}>Female</h2>
 
-        {
-          data && data.clothing.map((item, female) => {
-            if (item.sex === "Female") {
-              return (
-                <div key={female}>
-                  <Product img={item.image} tag={item.title} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.content}>
 
-        <p onClick={() => addingData()}>Hoodies</p>
+          {
+            data && data.clothing.map((item, female) => {
+              if (item.sex === "Female") {
+                return (
+                  <div key={female}>
+                    <Product img={item.image} tag={item.title} />
+                  </div>
+                )
+              }
+            })
+          }
 
-        {
-          data && data.clothing.map((item, femalehoodies) => {
-            if (item.category === "Hoodies" && item.sex === "Female") {
-              return (
-                <div key={femalehoodies}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        </div>
 
-        <p onClick={() => addingData()}>Jackets</p>
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Hoodies</div>
 
-        {
-          data && data.clothing.map((item, femalejackets) => {
-            if (item.category === "Jackets" && item.sex === "Female") {
-              return (
-                <div key={femalejackets}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.content}>
 
-        <p onClick={() => addingData()}>Headgear</p>
+          {
+            data && data.clothing.map((item, femalehoodies) => {
+              if (item.category === "Hoodies" && item.sex === "Female") {
+                return (
+                  <div key={femalehoodies}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
 
-        {
-          data && data.clothing.map((item, femaleheadgear) => {
-            if (item.category === "Headgear" && item.sex === "Female") {
-              return (
-                <div key={femaleheadgear}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        </div>
+
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Jackets</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, femalejackets) => {
+              if (item.category === "Jackets" && item.sex === "Female") {
+                return (
+                  <div key={femalejackets}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
+
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Headgear</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, femaleheadgear) => {
+              if (item.category === "Headgear" && item.sex === "Female") {
+                return (
+                  <div key={femaleheadgear}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
 
 
         {/* Unisex section */}
 
-        <h1 onClick={() => addingData()}>Unisex</h1>
+        <h2 className={styles.bigTitle}
+        onClick={() => addingData()}>Unisex</h2>
 
-        {
-          data && data.clothing.map((item, unisex) => {
-            if (item.sex === "Unisex") {
-              return (
-                <div key={unisex}>
-                  <Product img={item.image} tag={item.title} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.content}>
 
-        <p onClick={() => addingData()}>Hoodies</p>
+          {
+            data && data.clothing.map((item, unisex) => {
+              if (item.sex === "Unisex") {
+                return (
+                  <div key={unisex}>
+                    <Product img={item.image} tag={item.title} />
+                  </div>
+                )
+              }
 
-        {
-          data && data.clothing.map((item, unihoodies) => {
-            if (item.category === "Hoodies" && item.sex === "Unisex") {
-              return (
-                <div key={unihoodies}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+            })
+          }
 
-        <p onClick={() => addingData()}>Jackets</p>
+        </div>
 
-        {
-          data && data.clothing.map((item, unijackets) => {
-            if (item.category === "Jackets" && item.sex === "Unisex") {
-              return (
-                <div key={unijackets}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Hoodies</div>
 
-        <p onClick={() => addingData()}>Headgear</p>
+        <div className={styles.content}>
 
-        {
-          data && data.clothing.map((item, uniheadgear) => {
-            if (item.category === "Headgear" && item.sex === "Unisex") {
-              return (
-                <div key={uniheadgear}>
-                  <Product img={item.image} tag={item.title} colorCircle={item.colours} price={item.cost} />
-                </div>
-              )
-            }
-          })
-        }
+          {
+            data && data.clothing.map((item, unihoodies) => {
+              if (item.category === "Hoodies" && item.sex === "Unisex") {
+                return (
+                  <div key={unihoodies}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
+
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Jackets</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, unijackets) => {
+              if (item.category === "Jackets" && item.sex === "Unisex") {
+                return (
+                  <div key={unijackets}>
+                    <Product img={item.image}
+                      tag={item.title}
+
+                      colorCircle={
+                        item.hex && item.hex.map((cl, ind) => {
+                          return (
+                            <div key={ind}>
+                              {cl}
+                            </div>
+                          )
+                        })
+                      }
+
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
+
+        <div className={styles.smallTitle}
+        onClick={() => addingData()}>Headgear</div>
+
+        <div className={styles.content}>
+
+          {
+            data && data.clothing.map((item, uniheadgear) => {
+              if (item.category === "Headgear" && item.sex === "Unisex") {
+                return (
+                  <div key={uniheadgear}>
+                    <Product img={item.image}
+                      tag={item.title}
+                      colorCircle={item.hex}
+                      price={item.cost} />
+                  </div>
+                )
+              }
+            })
+          }
+
+        </div>
 
       </main>
     </>

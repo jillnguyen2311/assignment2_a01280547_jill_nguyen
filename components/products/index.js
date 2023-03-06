@@ -1,14 +1,16 @@
 import Image from "next/image";
 import styles from '@/Components/products/product.module.css';
+import { useState } from "react";
 
 export default function Product({
+    
     img = "",
     tag = "",
     price = "",
     colorCircle = ""
 
 }) {
-
+    const [color,changeColor] = useState();
     return (
         <div className={styles.products}>
             <Image
@@ -22,8 +24,7 @@ export default function Product({
                 {tag}
             </div>
 
-            <div>
-                {colorCircle}
+            <div style={{ backgroundColor: colorCircle, height: 15, width: 15, borderRadius: 50 }}>
             </div>
 
             <div>
