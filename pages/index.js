@@ -7,32 +7,94 @@ import Product from '@/components/products'
 
 export default function Home() {
 
-  const [data, setData] = useState();
-  const [trigger, setTrigger] = useState(false);
+  const [dataMale, setDataMale] = useState();
+  const [dataMHoodies, setDataMHoodies] = useState();
+  const [dataMJackets, setDataMJackets] = useState();
+  const [dataMHeadgear, setDataMHeadgear] = useState();
 
-  const addingData = () => {
-    console.log("Here");
-    setData(inventory);
+
+  const [dataFemale, setDataFemale] = useState();
+  const [dataFHoodies, setDataFHoodies] = useState();
+  const [dataFJackets, setDataFJackets] = useState();
+  const [dataFHeadgear, setDataFHeadgear] = useState();
+
+
+  const [dataUnisex, setDataUnisex] = useState();
+  const [dataUHoodies, setDataUHoodies] = useState();
+  const [dataUJackets, setDataUJackets] = useState();
+  const [dataUHeadgear, setDataUHeadgear] = useState();
+
+
+
+
+  const addingDataMale = () => {
+    console.log("Male");
+    setDataMale(inventory);
+    console.log(inventory);
+  }
+  const addingDataMHoodies = () => {
+    console.log("Male Hoodies");
+    setDataMHoodies(inventory);
+    console.log(inventory);
+  }
+  const addingDataMJackets = () => {
+    console.log("Male Jackets");
+    setDataMJackets(inventory);
+    console.log(inventory);
+  }
+  const addingDataMHeadgear = () => {
+    console.log("Male Headgear");
+    setDataMHeadgear(inventory);
     console.log(inventory);
   }
 
-  const HandleChange = () => {
 
+
+  const addingDataFemale = () => {
+    console.log("Female");
+    setDataFemale(inventory);
+    console.log(inventory);
+  }
+  const addingDataFHoodies = () => {
+    console.log("Female Hoodies");
+    setDataFHoodies(inventory);
+    console.log(inventory);
+  }
+  const addingDataFJackets = () => {
+    console.log("Female Jackets");
+    setDataFJackets(inventory);
+    console.log(inventory);
+  }
+  const addingDataFHeadgear = () => {
+    console.log("Female Headgear");
+    setDataFHeadgear(inventory);
+    console.log(inventory);
   }
 
-  useEffect(() => {
-    let interval;
 
-    if (trigger) {
-      interval = setInterval(() => {
-        HandleChange()
-        setTrigger(false)
-      })
-    }
 
-    console.log(trigger)
-    return () => clearInterval(interval)
-  }, [trigger]);
+  const addingDataUnisex = () => {
+    console.log("Unisex");
+    setDataUnisex(inventory);
+    console.log(inventory);
+  }
+
+  const addingDataUHoodies = () => {
+    console.log("Unisex Hoodies");
+    setDataUHoodies(inventory);
+    console.log(inventory);
+  }
+  const addingDataUJackets = () => {
+    console.log("Unisex Jackets");
+    setDataUJackets(inventory);
+    console.log(inventory);
+  }
+  const addingDataUHeadgear = () => {
+    console.log("Unisex Headgear");
+    setDataUHeadgear(inventory);
+    console.log(inventory);
+  }
+
 
 
   return (
@@ -52,15 +114,14 @@ export default function Home() {
         {/* Male section */}
 
         <h2 className={styles.bigTitle}
-        onClick={() => {
-          addingData()
-          setTrigger(true)
-        }}>Male</h2>
+          onClick={() => {
+            addingDataMale()
+          }}>Male</h2>
 
 
         <div className={styles.content}>
           {
-            data && data.clothing.map((item, male) => {
+            dataMale && dataMale.clothing.map((item, male) => {
               if (item.sex === "Male") {
                 return (
                   <div key={male}>
@@ -73,12 +134,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Hoodies</div>
+          onClick={() => addingDataMHoodies()}>Hoodies</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, malehoodies) => {
+            dataMHoodies && dataMHoodies.clothing.map((item, malehoodies) => {
               if (item.category === "Hoodies" && item.sex === "Male") {
                 return (
                   <div key={malehoodies}>
@@ -95,12 +156,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Jackets</div>
+          onClick={() => addingDataMJackets()}>Jackets</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, malejackets) => {
+            dataMJackets && dataMJackets.clothing.map((item, malejackets) => {
               if (item.category === "Jackets" && item.sex === "Male") {
                 return (
                   <div key={malejackets}>
@@ -117,12 +178,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Headgear</div>
+          onClick={() => addingDataMHeadgear()}>Headgear</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, maleheadgear) => {
+            dataMHeadgear && dataMHeadgear.clothing.map((item, maleheadgear) => {
               if (item.category === "Headgear" && item.sex === "Male") {
                 return (
                   <div key={maleheadgear}>
@@ -142,12 +203,12 @@ export default function Home() {
         {/* Female section */}
 
         <h2 className={styles.bigTitle}
-        onClick={() => addingData()}>Female</h2>
+          onClick={() => addingDataFemale()}>Female</h2>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, female) => {
+            dataFemale && dataFemale.clothing.map((item, female) => {
               if (item.sex === "Female") {
                 return (
                   <div key={female}>
@@ -161,12 +222,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Hoodies</div>
+          onClick={() => addingDataFHoodies()}>Hoodies</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, femalehoodies) => {
+            dataFHoodies && dataFHoodies.clothing.map((item, femalehoodies) => {
               if (item.category === "Hoodies" && item.sex === "Female") {
                 return (
                   <div key={femalehoodies}>
@@ -183,12 +244,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Jackets</div>
+          onClick={() => addingDataFJackets()}>Jackets</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, femalejackets) => {
+            dataFJackets && dataFJackets.clothing.map((item, femalejackets) => {
               if (item.category === "Jackets" && item.sex === "Female") {
                 return (
                   <div key={femalejackets}>
@@ -205,12 +266,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Headgear</div>
+          onClick={() => addingDataFHeadgear()}>Headgear</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, femaleheadgear) => {
+            dataFHeadgear && dataFHeadgear.clothing.map((item, femaleheadgear) => {
               if (item.category === "Headgear" && item.sex === "Female") {
                 return (
                   <div key={femaleheadgear}>
@@ -230,12 +291,12 @@ export default function Home() {
         {/* Unisex section */}
 
         <h2 className={styles.bigTitle}
-        onClick={() => addingData()}>Unisex</h2>
+          onClick={() => addingDataUnisex()}>Unisex</h2>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, unisex) => {
+            dataUnisex && dataUnisex.clothing.map((item, unisex) => {
               if (item.sex === "Unisex") {
                 return (
                   <div key={unisex}>
@@ -250,12 +311,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Hoodies</div>
+          onClick={() => addingDataUHoodies()}>Hoodies</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, unihoodies) => {
+            dataUHoodies && dataUHoodies.clothing.map((item, unihoodies) => {
               if (item.category === "Hoodies" && item.sex === "Unisex") {
                 return (
                   <div key={unihoodies}>
@@ -272,12 +333,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Jackets</div>
+          onClick={() => addingDataUJackets()}>Jackets</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, unijackets) => {
+            dataUJackets && dataUJackets.clothing.map((item, unijackets) => {
               if (item.category === "Jackets" && item.sex === "Unisex") {
                 return (
                   <div key={unijackets}>
@@ -304,12 +365,12 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-        onClick={() => addingData()}>Headgear</div>
+          onClick={() => addingDataUHeadgear()}>Headgear</div>
 
         <div className={styles.content}>
 
           {
-            data && data.clothing.map((item, uniheadgear) => {
+            dataUHeadgear && dataUHeadgear.clothing.map((item, uniheadgear) => {
               if (item.category === "Headgear" && item.sex === "Unisex") {
                 return (
                   <div key={uniheadgear}>

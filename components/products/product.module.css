@@ -1,7 +1,8 @@
 .products{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  gap: 5px;
+  gap: 1rem;
   font-family:'Courier New', Courier, monospace;
   font-weight:bold;
   color: black;
