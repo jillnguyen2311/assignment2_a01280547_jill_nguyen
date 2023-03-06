@@ -7,6 +7,11 @@ import Product from '@/components/products'
 
 export default function Home() {
 
+  const [showMe, setShowMe] = useState(false);
+  function toggle() {
+    setShowMe(!showMe);
+  }
+
   const [dataMale, setDataMale] = useState();
   const [dataMHoodies, setDataMHoodies] = useState();
   const [dataMJackets, setDataMJackets] = useState();
@@ -115,11 +120,14 @@ export default function Home() {
 
         <h2 className={styles.bigTitle}
           onClick={() => {
-            addingDataMale()
-          }}>Male</h2>
+            addingDataMale(),
+              toggle()
+          }
+          }>Male</h2>
 
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
           {
             dataMale && dataMale.clothing.map((item, male) => {
               if (item.sex === "Male") {
@@ -134,9 +142,14 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataMHoodies()}>Hoodies</div>
+          onClick={() => {
+            addingDataMHoodies(),
+              toggle()
+          }
+          }>Hoodies</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataMHoodies && dataMHoodies.clothing.map((item, malehoodies) => {
@@ -156,9 +169,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataMJackets()}>Jackets</div>
+          onClick={() => {
+            addingDataMJackets(),
+              toggle()
+          }}>Jackets</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataMJackets && dataMJackets.clothing.map((item, malejackets) => {
@@ -178,9 +195,14 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataMHeadgear()}>Headgear</div>
+          onClick={() => {
+            addingDataMHeadgear(),
+              toggle()
 
-        <div className={styles.content}>
+          }}>Headgear</div>
+
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataMHeadgear && dataMHeadgear.clothing.map((item, maleheadgear) => {
@@ -203,9 +225,13 @@ export default function Home() {
         {/* Female section */}
 
         <h2 className={styles.bigTitle}
-          onClick={() => addingDataFemale()}>Female</h2>
+          onClick={() => {
+            addingDataFemale(),
+              toggle()
+          }}>Female</h2>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataFemale && dataFemale.clothing.map((item, female) => {
@@ -222,9 +248,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataFHoodies()}>Hoodies</div>
+          onClick={() => {
+            addingDataFHoodies(),
+              toggle()
+          }}>Hoodies</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataFHoodies && dataFHoodies.clothing.map((item, femalehoodies) => {
@@ -244,9 +274,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataFJackets()}>Jackets</div>
+          onClick={() => {
+            addingDataFJackets(),
+              toggle()
+          }}>Jackets</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataFJackets && dataFJackets.clothing.map((item, femalejackets) => {
@@ -266,9 +300,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataFHeadgear()}>Headgear</div>
+          onClick={() => {
+            addingDataFHeadgear(),
+              toggle()
+          }}>Headgear</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataFHeadgear && dataFHeadgear.clothing.map((item, femaleheadgear) => {
@@ -291,9 +329,13 @@ export default function Home() {
         {/* Unisex section */}
 
         <h2 className={styles.bigTitle}
-          onClick={() => addingDataUnisex()}>Unisex</h2>
+          onClick={() => {
+            addingDataUnisex(),
+            toggle()
+          }}>Unisex</h2>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataUnisex && dataUnisex.clothing.map((item, unisex) => {
@@ -311,9 +353,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataUHoodies()}>Hoodies</div>
+          onClick={() => {
+            addingDataUHoodies(),
+              toggle()
+          }}>Hoodies</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataUHoodies && dataUHoodies.clothing.map((item, unihoodies) => {
@@ -333,9 +379,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataUJackets()}>Jackets</div>
+          onClick={() => {
+            addingDataUJackets(),
+              toggle()
+          }}>Jackets</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataUJackets && dataUJackets.clothing.map((item, unijackets) => {
@@ -365,9 +415,13 @@ export default function Home() {
         </div>
 
         <div className={styles.smallTitle}
-          onClick={() => addingDataUHeadgear()}>Headgear</div>
+          onClick={() => {
+            addingDataUHeadgear(),
+              toggle()
+          }}>Headgear</div>
 
-        <div className={styles.content}>
+        <div style={{ display: showMe ? "block" : "none" }}
+          className={styles.content}>
 
           {
             dataUHeadgear && dataUHeadgear.clothing.map((item, uniheadgear) => {

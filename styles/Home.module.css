@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     gap: 5rem;
+    flex-wrap: wrap;
 }
 
 .introTitle {
@@ -11,6 +12,7 @@
     font-size: 40px;
     margin: 10px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .bigTitle {
@@ -19,6 +21,7 @@
     font-weight:bold;
     font-size: 30px;
     margin: 12px 5rem;
+    flex-wrap: wrap;
 }
 
 .smallTitle {
@@ -26,4 +29,20 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin: 12px 7rem;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 820px) {
+    .content {
+        display: flex;
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
